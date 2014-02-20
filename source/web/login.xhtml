@@ -11,28 +11,28 @@
         <!-- head start -->
         <!-- *************************************************************** -->        
         <h:head> 
-            
+
             <!-- *********************************************************** -->
             <!-- IE Compatibility -->
             <!-- *********************************************************** -->
-           <f:facet name="first">
+            <f:facet name="first">
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                 <meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
             </f:facet>  
-            
+
             <!-- *********************************************************** -->
             <!-- css start -->
             <!-- *********************************************************** -->
-        
-            <!-- Insert the page css -->
+
             <link href="src/css/default.css" rel="stylesheet" type="text/css"/> 
-            
+            <link href="src/css/login.css" rel="stylesheet" type="text/css"/>
+
             <!-- *********************************************************** -->
             <!-- css end -->
             <!-- *********************************************************** -->
-                    
-             <!-- Insert the page title -->
-            <title></title>           
+
+            <!-- Insert the page title -->
+            <title>#{strings.loginTitle}</title>           
 
         </h:head>
         <!-- *************************************************************** -->
@@ -51,7 +51,42 @@
                 <!-- ******************************************************* -->
                 <p:layoutUnit styleClass="central-panel" 
                               position="center">  
-                             
+
+                    <h:form id="loginForm">
+
+                        <p:messages id="messages"
+                                    autoUpdate="true"
+                                    closable="true"/>
+
+                        <div id="loginPanel">
+                            <h:panelGrid columns="1"
+                                         cellpadding="20">
+                                <p:panel header="#{strings.loginHeader}">                                
+                                    <h:panelGrid columns="2"
+                                                 cellpadding="10">
+                                        <p:outputLabel value="#{strings.username}"/>
+                                        <p:inputText value="#{login.username}"
+                                                     required="true"
+                                                     requiredMessage="#{strings.usernameRequiredMessage}"/>
+                                        <p:outputLabel value="#{strings.password}"/>
+                                        <p:password value="#{login.password}"
+                                                    required="true"
+                                                    requiredMessage="#{strings.passwordRequiredMessage}"/>
+                                    </h:panelGrid>
+                                </p:panel>   
+                              
+                                <div class="links">
+                                    #{strings.singUpDescription} <a href="#">#{strings.singUp}</a>                                       
+                                </div>                                                                      
+                                                          
+                                <p:commandButton value="#{strings.signIn}"
+                                                 update="messages"/>
+                            </h:panelGrid>   
+
+                        </div>
+
+                    </h:form>
+
                 </p:layoutUnit>
                 <!-- ******************************************************* -->
                 <!-- central panel end -->
@@ -62,18 +97,18 @@
                 <!-- ******************************************************* -->
                 <p:layoutUnit styleClass="left-panel"
                               position="west">
-                   
+
                 </p:layoutUnit>
                 <!-- ******************************************************* -->
                 <!-- left panel end -->
                 <!-- ******************************************************* -->
-                
-                 <!-- ******************************************************* -->
+
+                <!-- ******************************************************* -->
                 <!-- right panel start -->
                 <!-- ******************************************************* -->
                 <p:layoutUnit styleClass="right-panel" 
                               position="east">  
-                             
+
                 </p:layoutUnit>
                 <!-- ******************************************************* -->
                 <!-- right panel end -->
@@ -84,7 +119,7 @@
                 <!-- ******************************************************* -->
                 <p:layoutUnit styleClass="banner"
                               position="north">                    
-                               
+
                 </p:layoutUnit>
                 <!-- ******************************************************************* -->
                 <!-- banner end -->
@@ -95,7 +130,7 @@
                 <!-- ******************************************************************* -->
                 <p:layoutUnit styleClass="footer" 
                               position="south">               
-                                            
+
                 </p:layoutUnit>
                 <!-- ******************************************************************* -->
                 <!-- footer end -->

@@ -1,0 +1,10 @@
+#loginPanel
+{
+    position:absolute;
+    top: 30%;
+    bottom: 30%;
+    left: 40%;
+    right: 40%;    
+    text-align: center;
+}
+
