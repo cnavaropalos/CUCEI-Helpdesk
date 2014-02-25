@@ -1,4 +1,3 @@
-
 package mx.udg.helpdesk.entities;
 
 import java.io.Serializable;
@@ -20,13 +19,13 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "area_managers")
 @NamedQueries(
-{
-    @NamedQuery(name = "AreaManager.findAll", query = "SELECT a FROM AreaManager a"),
-    @NamedQuery(name = "AreaManager.findByUserID", query = "SELECT a FROM AreaManager a WHERE a.userID = :userID"),
-    @NamedQuery(name = "AreaManager.findByExt", query = "SELECT a FROM AreaManager a WHERE a.ext = :ext")
-})
-public class AreaManager implements Serializable
-{
+        {
+            @NamedQuery(name = "AreaManager.findAll", query = "SELECT a FROM AreaManager a"),
+            @NamedQuery(name = "AreaManager.findByUserID", query = "SELECT a FROM AreaManager a WHERE a.userID = :userID"),
+            @NamedQuery(name = "AreaManager.findByExt", query = "SELECT a FROM AreaManager a WHERE a.ext = :ext")
+        })
+public class AreaManager implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -45,89 +44,73 @@ public class AreaManager implements Serializable
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "areaManagerID")
     private List<Area> areaList;
 
-    public AreaManager()
-    {
+    public AreaManager() {
     }
 
-    public AreaManager(String userID)
-    {
+    public AreaManager(String userID) {
         this.userID = userID;
     }
 
-    public AreaManager(String userID, String ext)
-    {
+    public AreaManager(String userID, String ext) {
         this.userID = userID;
         this.ext = ext;
     }
 
-    public String getUserID()
-    {
+    public String getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID)
-    {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
 
-    public String getExt()
-    {
+    public String getExt() {
         return ext;
     }
 
-    public void setExt(String ext)
-    {
+    public void setExt(String ext) {
         this.ext = ext;
     }
 
-    public User getUser()
-    {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(User user)
-    {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    public List<Area> getAreaList()
-    {
+    public List<Area> getAreaList() {
         return areaList;
     }
 
-    public void setAreaList(List<Area> areaList)
-    {
+    public void setAreaList(List<Area> areaList) {
         this.areaList = areaList;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (userID != null ? userID.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof AreaManager))
-        {
+        if (!(object instanceof AreaManager)) {
             return false;
         }
         AreaManager other = (AreaManager) object;
-        if ((this.userID == null && other.userID != null) || (this.userID != null && !this.userID.equals(other.userID)))
-        {
+        if ((this.userID == null && other.userID != null) || (this.userID != null && !this.userID.equals(other.userID))) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "mx.udg.helpdesk.entities.AreaManager[ userID=" + userID + " ]";
     }
-    
+
 }

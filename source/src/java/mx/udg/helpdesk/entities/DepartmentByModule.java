@@ -1,4 +1,3 @@
-
 package mx.udg.helpdesk.entities;
 
 import java.io.Serializable;
@@ -16,13 +15,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "departments_by_module")
 @NamedQueries(
-{
-    @NamedQuery(name = "DepartmentByModule.findAll", query = "SELECT d FROM DepartmentByModule d"),
-    @NamedQuery(name = "DepartmentByModule.findByModuleID", query = "SELECT d FROM DepartmentByModule d WHERE d.departmentByModulePK.moduleID = :moduleID"),
-    @NamedQuery(name = "DepartmentByModule.findByDepartmentID", query = "SELECT d FROM DepartmentByModule d WHERE d.departmentByModulePK.departmentID = :departmentID")
-})
-public class DepartmentByModule implements Serializable
-{
+        {
+            @NamedQuery(name = "DepartmentByModule.findAll", query = "SELECT d FROM DepartmentByModule d"),
+            @NamedQuery(name = "DepartmentByModule.findByModuleID", query = "SELECT d FROM DepartmentByModule d WHERE d.departmentByModulePK.moduleID = :moduleID"),
+            @NamedQuery(name = "DepartmentByModule.findByDepartmentID", query = "SELECT d FROM DepartmentByModule d WHERE d.departmentByModulePK.departmentID = :departmentID")
+        })
+public class DepartmentByModule implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected DepartmentByModulePK departmentByModulePK;
@@ -41,108 +40,88 @@ public class DepartmentByModule implements Serializable
     @ManyToOne(optional = false)
     private Module module;
 
-    public DepartmentByModule()
-    {
+    public DepartmentByModule() {
     }
 
-    public DepartmentByModule(DepartmentByModulePK departmentByModulePK)
-    {
+    public DepartmentByModule(DepartmentByModulePK departmentByModulePK) {
         this.departmentByModulePK = departmentByModulePK;
     }
 
-    public DepartmentByModule(int moduleID, int departmentID)
-    {
+    public DepartmentByModule(int moduleID, int departmentID) {
         this.departmentByModulePK = new DepartmentByModulePK(moduleID, departmentID);
     }
 
-    public DepartmentByModulePK getDepartmentByModulePK()
-    {
+    public DepartmentByModulePK getDepartmentByModulePK() {
         return departmentByModulePK;
     }
 
-    public void setDepartmentByModulePK(DepartmentByModulePK departmentByModulePK)
-    {
+    public void setDepartmentByModulePK(DepartmentByModulePK departmentByModulePK) {
         this.departmentByModulePK = departmentByModulePK;
     }
 
-    public List<Report> getReportList()
-    {
+    public List<Report> getReportList() {
         return reportList;
     }
 
-    public void setReportList(List<Report> reportList)
-    {
+    public void setReportList(List<Report> reportList) {
         this.reportList = reportList;
     }
 
-    public Priority getPriorityID()
-    {
+    public Priority getPriorityID() {
         return priorityID;
     }
 
-    public void setPriorityID(Priority priorityID)
-    {
+    public void setPriorityID(Priority priorityID) {
         this.priorityID = priorityID;
     }
 
-    public Floor getFloorID()
-    {
+    public Floor getFloorID() {
         return floorID;
     }
 
-    public void setFloorID(Floor floorID)
-    {
+    public void setFloorID(Floor floorID) {
         this.floorID = floorID;
     }
 
-    public Department getDepartment()
-    {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(Department department)
-    {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 
-    public Module getModule()
-    {
+    public Module getModule() {
         return module;
     }
 
-    public void setModule(Module module)
-    {
+    public void setModule(Module module) {
         this.module = module;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (departmentByModulePK != null ? departmentByModulePK.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof DepartmentByModule))
-        {
+        if (!(object instanceof DepartmentByModule)) {
             return false;
         }
         DepartmentByModule other = (DepartmentByModule) object;
-        if ((this.departmentByModulePK == null && other.departmentByModulePK != null) || (this.departmentByModulePK != null && !this.departmentByModulePK.equals(other.departmentByModulePK)))
-        {
+        if ((this.departmentByModulePK == null && other.departmentByModulePK != null) || (this.departmentByModulePK != null && !this.departmentByModulePK.equals(other.departmentByModulePK))) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "mx.udg.helpdesk.entities.DepartmentByModule[ departmentByModulePK=" + departmentByModulePK + " ]";
     }
-    
+
 }

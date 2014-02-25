@@ -1,4 +1,3 @@
-
 package mx.udg.helpdesk.entities;
 
 import java.io.Serializable;
@@ -17,14 +16,14 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "users")
 @NamedQueries(
-{
-    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
-    @NamedQuery(name = "User.findByUserID", query = "SELECT u FROM User u WHERE u.userID = :userID"),
-    @NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.name = :name"),
-    @NamedQuery(name = "User.findByLastName", query = "SELECT u FROM User u WHERE u.lastName = :lastName")
-})
-public class User implements Serializable
-{
+        {
+            @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
+            @NamedQuery(name = "User.findByUserID", query = "SELECT u FROM User u WHERE u.userID = :userID"),
+            @NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.name = :name"),
+            @NamedQuery(name = "User.findByLastName", query = "SELECT u FROM User u WHERE u.lastName = :lastName")
+        })
+public class User implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -49,110 +48,90 @@ public class User implements Serializable
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
     private AreaManager areaManager;
 
-    public User()
-    {
+    public User() {
     }
 
-    public User(String userID)
-    {
+    public User(String userID) {
         this.userID = userID;
     }
 
-    public User(String userID, String name, String lastName)
-    {
+    public User(String userID, String name, String lastName) {
         this.userID = userID;
         this.name = name;
         this.lastName = lastName;
     }
 
-    public String getUserID()
-    {
+    public String getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID)
-    {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getLastName()
-    {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName)
-    {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public Capturist getCapturist()
-    {
+    public Capturist getCapturist() {
         return capturist;
     }
 
-    public void setCapturist(Capturist capturist)
-    {
+    public void setCapturist(Capturist capturist) {
         this.capturist = capturist;
     }
 
-    public ReportManager getReportManager()
-    {
+    public ReportManager getReportManager() {
         return reportManager;
     }
 
-    public void setReportManager(ReportManager reportManager)
-    {
+    public void setReportManager(ReportManager reportManager) {
         this.reportManager = reportManager;
     }
 
-    public AreaManager getAreaManager()
-    {
+    public AreaManager getAreaManager() {
         return areaManager;
     }
 
-    public void setAreaManager(AreaManager areaManager)
-    {
+    public void setAreaManager(AreaManager areaManager) {
         this.areaManager = areaManager;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (userID != null ? userID.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User))
-        {
+        if (!(object instanceof User)) {
             return false;
         }
         User other = (User) object;
-        if ((this.userID == null && other.userID != null) || (this.userID != null && !this.userID.equals(other.userID)))
-        {
+        if ((this.userID == null && other.userID != null) || (this.userID != null && !this.userID.equals(other.userID))) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "mx.udg.helpdesk.entities.User[ userID=" + userID + " ]";
     }
-    
+
 }

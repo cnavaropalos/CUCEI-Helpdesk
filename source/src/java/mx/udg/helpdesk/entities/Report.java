@@ -1,4 +1,3 @@
-
 package mx.udg.helpdesk.entities;
 
 import java.io.Serializable;
@@ -24,19 +23,19 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "reports")
 @NamedQueries(
-{
-    @NamedQuery(name = "Report.findAll", query = "SELECT r FROM Report r"),
-    @NamedQuery(name = "Report.findByReportID", query = "SELECT r FROM Report r WHERE r.reportPK.reportID = :reportID"),
-    @NamedQuery(name = "Report.findByReportDate", query = "SELECT r FROM Report r WHERE r.reportPK.reportDate = :reportDate"),
-    @NamedQuery(name = "Report.findByReportTime", query = "SELECT r FROM Report r WHERE r.reportTime = :reportTime"),
-    @NamedQuery(name = "Report.findByClientID", query = "SELECT r FROM Report r WHERE r.clientID = :clientID"),
-    @NamedQuery(name = "Report.findByClientName", query = "SELECT r FROM Report r WHERE r.clientName = :clientName"),
-    @NamedQuery(name = "Report.findByClientEmail", query = "SELECT r FROM Report r WHERE r.clientEmail = :clientEmail"),
-    @NamedQuery(name = "Report.findByDescription", query = "SELECT r FROM Report r WHERE r.description = :description"),
-    @NamedQuery(name = "Report.findByNotes", query = "SELECT r FROM Report r WHERE r.notes = :notes")
-})
-public class Report implements Serializable
-{
+        {
+            @NamedQuery(name = "Report.findAll", query = "SELECT r FROM Report r"),
+            @NamedQuery(name = "Report.findByReportID", query = "SELECT r FROM Report r WHERE r.reportPK.reportID = :reportID"),
+            @NamedQuery(name = "Report.findByReportDate", query = "SELECT r FROM Report r WHERE r.reportPK.reportDate = :reportDate"),
+            @NamedQuery(name = "Report.findByReportTime", query = "SELECT r FROM Report r WHERE r.reportTime = :reportTime"),
+            @NamedQuery(name = "Report.findByClientID", query = "SELECT r FROM Report r WHERE r.clientID = :clientID"),
+            @NamedQuery(name = "Report.findByClientName", query = "SELECT r FROM Report r WHERE r.clientName = :clientName"),
+            @NamedQuery(name = "Report.findByClientEmail", query = "SELECT r FROM Report r WHERE r.clientEmail = :clientEmail"),
+            @NamedQuery(name = "Report.findByDescription", query = "SELECT r FROM Report r WHERE r.description = :description"),
+            @NamedQuery(name = "Report.findByNotes", query = "SELECT r FROM Report r WHERE r.notes = :notes")
+        })
+public class Report implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ReportPK reportPK;
@@ -77,26 +76,23 @@ public class Report implements Serializable
     @ManyToOne(optional = false)
     private ProblemCategory problemID;
     @JoinColumns(
-    {
-        @JoinColumn(name = "moduleID", referencedColumnName = "moduleID"),
-        @JoinColumn(name = "departmentID", referencedColumnName = "departmentID")
-    })
+            {
+                @JoinColumn(name = "moduleID", referencedColumnName = "moduleID"),
+                @JoinColumn(name = "departmentID", referencedColumnName = "departmentID")
+            })
     @ManyToOne(optional = false)
     private DepartmentByModule departmentByModule;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "report")
     private List<WorkBlog> workBlogList;
 
-    public Report()
-    {
+    public Report() {
     }
 
-    public Report(ReportPK reportPK)
-    {
+    public Report(ReportPK reportPK) {
         this.reportPK = reportPK;
     }
 
-    public Report(ReportPK reportPK, Date reportTime, String clientID, String clientName, String clientEmail, String description, String notes)
-    {
+    public Report(ReportPK reportPK, Date reportTime, String clientID, String clientName, String clientEmail, String description, String notes) {
         this.reportPK = reportPK;
         this.reportTime = reportTime;
         this.clientID = clientID;
@@ -106,149 +102,121 @@ public class Report implements Serializable
         this.notes = notes;
     }
 
-    public Report(int reportID, Date reportDate)
-    {
+    public Report(int reportID, Date reportDate) {
         this.reportPK = new ReportPK(reportID, reportDate);
     }
 
-    public ReportPK getReportPK()
-    {
+    public ReportPK getReportPK() {
         return reportPK;
     }
 
-    public void setReportPK(ReportPK reportPK)
-    {
+    public void setReportPK(ReportPK reportPK) {
         this.reportPK = reportPK;
     }
 
-    public Date getReportTime()
-    {
+    public Date getReportTime() {
         return reportTime;
     }
 
-    public void setReportTime(Date reportTime)
-    {
+    public void setReportTime(Date reportTime) {
         this.reportTime = reportTime;
     }
 
-    public String getClientID()
-    {
+    public String getClientID() {
         return clientID;
     }
 
-    public void setClientID(String clientID)
-    {
+    public void setClientID(String clientID) {
         this.clientID = clientID;
     }
 
-    public String getClientName()
-    {
+    public String getClientName() {
         return clientName;
     }
 
-    public void setClientName(String clientName)
-    {
+    public void setClientName(String clientName) {
         this.clientName = clientName;
     }
 
-    public String getClientEmail()
-    {
+    public String getClientEmail() {
         return clientEmail;
     }
 
-    public void setClientEmail(String clientEmail)
-    {
+    public void setClientEmail(String clientEmail) {
         this.clientEmail = clientEmail;
     }
 
-    public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description)
-    {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getNotes()
-    {
+    public String getNotes() {
         return notes;
     }
 
-    public void setNotes(String notes)
-    {
+    public void setNotes(String notes) {
         this.notes = notes;
     }
 
-    public Capturist getCapturisID()
-    {
+    public Capturist getCapturisID() {
         return capturisID;
     }
 
-    public void setCapturisID(Capturist capturisID)
-    {
+    public void setCapturisID(Capturist capturisID) {
         this.capturisID = capturisID;
     }
 
-    public ProblemCategory getProblemID()
-    {
+    public ProblemCategory getProblemID() {
         return problemID;
     }
 
-    public void setProblemID(ProblemCategory problemID)
-    {
+    public void setProblemID(ProblemCategory problemID) {
         this.problemID = problemID;
     }
 
-    public DepartmentByModule getDepartmentByModule()
-    {
+    public DepartmentByModule getDepartmentByModule() {
         return departmentByModule;
     }
 
-    public void setDepartmentByModule(DepartmentByModule departmentByModule)
-    {
+    public void setDepartmentByModule(DepartmentByModule departmentByModule) {
         this.departmentByModule = departmentByModule;
     }
 
-    public List<WorkBlog> getWorkBlogList()
-    {
+    public List<WorkBlog> getWorkBlogList() {
         return workBlogList;
     }
 
-    public void setWorkBlogList(List<WorkBlog> workBlogList)
-    {
+    public void setWorkBlogList(List<WorkBlog> workBlogList) {
         this.workBlogList = workBlogList;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (reportPK != null ? reportPK.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Report))
-        {
+        if (!(object instanceof Report)) {
             return false;
         }
         Report other = (Report) object;
-        if ((this.reportPK == null && other.reportPK != null) || (this.reportPK != null && !this.reportPK.equals(other.reportPK)))
-        {
+        if ((this.reportPK == null && other.reportPK != null) || (this.reportPK != null && !this.reportPK.equals(other.reportPK))) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "mx.udg.helpdesk.entities.Report[ reportPK=" + reportPK + " ]";
     }
-    
+
 }

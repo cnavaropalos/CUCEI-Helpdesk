@@ -1,25 +1,57 @@
-.banner{
-    
+.ui-layout-center .ui-layout-unit-content,
+.ui-layout-west .ui-layout-unit-content,
+.ui-layout-east .ui-layout-unit-content,
+.ui-layout-north .ui-layout-unit-content,
+.ui-layout-south .ui-layout-unit-content
+{
+    overflow: hidden;
 }
 
-.footer{
-    
+.ui-layout-unit
+{
+    padding: 2.4em;
 }
 
-.left-panel{
-    
+.ui-layout-unit .ui-layout-unit-content
+{
+    background: transparent;
+}
+
+.central-panel, .left-panel, .right-panel, .banner, .footer
+{    border: none;
+}
+
+
+.banner
+{
+    background-image:url('../img/banner.png');
+}
+
+.footer
+{
+    background-image:url('../img/footer.png');
+}
+
+.left-panel
+{
+
 }
 
 .right-panel{
-    
+
 }
 
 .central-panel{
-    
+
+}
+
+
+.charly_robot
+{
 }
 
 .links a
 {
     color: darkcyan;
-    text-decoration: none;   
+    text-decoration: none;
 }

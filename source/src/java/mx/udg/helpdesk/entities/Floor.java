@@ -1,4 +1,3 @@
-
 package mx.udg.helpdesk.entities;
 
 import java.io.Serializable;
@@ -20,13 +19,13 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "floors")
 @NamedQueries(
-{
-    @NamedQuery(name = "Floor.findAll", query = "SELECT f FROM Floor f"),
-    @NamedQuery(name = "Floor.findByFloorID", query = "SELECT f FROM Floor f WHERE f.floorID = :floorID"),
-    @NamedQuery(name = "Floor.findByName", query = "SELECT f FROM Floor f WHERE f.name = :name")
-})
-public class Floor implements Serializable
-{
+        {
+            @NamedQuery(name = "Floor.findAll", query = "SELECT f FROM Floor f"),
+            @NamedQuery(name = "Floor.findByFloorID", query = "SELECT f FROM Floor f WHERE f.floorID = :floorID"),
+            @NamedQuery(name = "Floor.findByName", query = "SELECT f FROM Floor f WHERE f.name = :name")
+        })
+public class Floor implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,79 +40,65 @@ public class Floor implements Serializable
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "floorID")
     private List<DepartmentByModule> departmentByModuleList;
 
-    public Floor()
-    {
+    public Floor() {
     }
 
-    public Floor(Integer floorID)
-    {
+    public Floor(Integer floorID) {
         this.floorID = floorID;
     }
 
-    public Floor(Integer floorID, String name)
-    {
+    public Floor(Integer floorID, String name) {
         this.floorID = floorID;
         this.name = name;
     }
 
-    public Integer getFloorID()
-    {
+    public Integer getFloorID() {
         return floorID;
     }
 
-    public void setFloorID(Integer floorID)
-    {
+    public void setFloorID(Integer floorID) {
         this.floorID = floorID;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public List<DepartmentByModule> getDepartmentByModuleList()
-    {
+    public List<DepartmentByModule> getDepartmentByModuleList() {
         return departmentByModuleList;
     }
 
-    public void setDepartmentByModuleList(List<DepartmentByModule> departmentByModuleList)
-    {
+    public void setDepartmentByModuleList(List<DepartmentByModule> departmentByModuleList) {
         this.departmentByModuleList = departmentByModuleList;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (floorID != null ? floorID.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Floor))
-        {
+        if (!(object instanceof Floor)) {
             return false;
         }
         Floor other = (Floor) object;
-        if ((this.floorID == null && other.floorID != null) || (this.floorID != null && !this.floorID.equals(other.floorID)))
-        {
+        if ((this.floorID == null && other.floorID != null) || (this.floorID != null && !this.floorID.equals(other.floorID))) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "mx.udg.helpdesk.entities.Floor[ floorID=" + floorID + " ]";
     }
-    
+
 }

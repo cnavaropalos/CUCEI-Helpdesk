@@ -1,4 +1,3 @@
-
 package mx.udg.helpdesk.entities;
 
 import java.io.Serializable;
@@ -11,8 +10,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 @Embeddable
-public class ReportPK implements Serializable
-{
+public class ReportPK implements Serializable {
+
     @Basic(optional = false)
     @Column(name = "reportID")
     private int reportID;
@@ -22,39 +21,32 @@ public class ReportPK implements Serializable
     @Temporal(TemporalType.DATE)
     private Date reportDate;
 
-    public ReportPK()
-    {
+    public ReportPK() {
     }
 
-    public ReportPK(int reportID, Date reportDate)
-    {
+    public ReportPK(int reportID, Date reportDate) {
         this.reportID = reportID;
         this.reportDate = reportDate;
     }
 
-    public int getReportID()
-    {
+    public int getReportID() {
         return reportID;
     }
 
-    public void setReportID(int reportID)
-    {
+    public void setReportID(int reportID) {
         this.reportID = reportID;
     }
 
-    public Date getReportDate()
-    {
+    public Date getReportDate() {
         return reportDate;
     }
 
-    public void setReportDate(Date reportDate)
-    {
+    public void setReportDate(Date reportDate) {
         this.reportDate = reportDate;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (int) reportID;
         hash += (reportDate != null ? reportDate.hashCode() : 0);
@@ -62,29 +54,24 @@ public class ReportPK implements Serializable
     }
 
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ReportPK))
-        {
+        if (!(object instanceof ReportPK)) {
             return false;
         }
         ReportPK other = (ReportPK) object;
-        if (this.reportID != other.reportID)
-        {
+        if (this.reportID != other.reportID) {
             return false;
         }
-        if ((this.reportDate == null && other.reportDate != null) || (this.reportDate != null && !this.reportDate.equals(other.reportDate)))
-        {
+        if ((this.reportDate == null && other.reportDate != null) || (this.reportDate != null && !this.reportDate.equals(other.reportDate))) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "mx.udg.helpdesk.entities.ReportPK[ reportID=" + reportID + ", reportDate=" + reportDate + " ]";
     }
-    
+
 }

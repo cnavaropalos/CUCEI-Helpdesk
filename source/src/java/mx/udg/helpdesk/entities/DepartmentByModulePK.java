@@ -1,4 +1,3 @@
-
 package mx.udg.helpdesk.entities;
 
 import java.io.Serializable;
@@ -8,8 +7,8 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
 @Embeddable
-public class DepartmentByModulePK implements Serializable
-{
+public class DepartmentByModulePK implements Serializable {
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "moduleID")
@@ -19,39 +18,32 @@ public class DepartmentByModulePK implements Serializable
     @Column(name = "departmentID")
     private int departmentID;
 
-    public DepartmentByModulePK()
-    {
+    public DepartmentByModulePK() {
     }
 
-    public DepartmentByModulePK(int moduleID, int departmentID)
-    {
+    public DepartmentByModulePK(int moduleID, int departmentID) {
         this.moduleID = moduleID;
         this.departmentID = departmentID;
     }
 
-    public int getModuleID()
-    {
+    public int getModuleID() {
         return moduleID;
     }
 
-    public void setModuleID(int moduleID)
-    {
+    public void setModuleID(int moduleID) {
         this.moduleID = moduleID;
     }
 
-    public int getDepartmentID()
-    {
+    public int getDepartmentID() {
         return departmentID;
     }
 
-    public void setDepartmentID(int departmentID)
-    {
+    public void setDepartmentID(int departmentID) {
         this.departmentID = departmentID;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (int) moduleID;
         hash += (int) departmentID;
@@ -59,29 +51,24 @@ public class DepartmentByModulePK implements Serializable
     }
 
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof DepartmentByModulePK))
-        {
+        if (!(object instanceof DepartmentByModulePK)) {
             return false;
         }
         DepartmentByModulePK other = (DepartmentByModulePK) object;
-        if (this.moduleID != other.moduleID)
-        {
+        if (this.moduleID != other.moduleID) {
             return false;
         }
-        if (this.departmentID != other.departmentID)
-        {
+        if (this.departmentID != other.departmentID) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "mx.udg.helpdesk.entities.DepartmentByModulePK[ moduleID=" + moduleID + ", departmentID=" + departmentID + " ]";
     }
-    
+
 }

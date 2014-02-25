@@ -1,4 +1,3 @@
-
 package mx.udg.helpdesk.entities;
 
 import java.io.Serializable;
@@ -22,13 +21,13 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "areas")
 @NamedQueries(
-{
-    @NamedQuery(name = "Area.findAll", query = "SELECT a FROM Area a"),
-    @NamedQuery(name = "Area.findByAreaID", query = "SELECT a FROM Area a WHERE a.areaID = :areaID"),
-    @NamedQuery(name = "Area.findByName", query = "SELECT a FROM Area a WHERE a.name = :name")
-})
-public class Area implements Serializable
-{
+        {
+            @NamedQuery(name = "Area.findAll", query = "SELECT a FROM Area a"),
+            @NamedQuery(name = "Area.findByAreaID", query = "SELECT a FROM Area a WHERE a.areaID = :areaID"),
+            @NamedQuery(name = "Area.findByName", query = "SELECT a FROM Area a WHERE a.name = :name")
+        })
+public class Area implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,89 +45,73 @@ public class Area implements Serializable
     @ManyToOne(optional = false)
     private AreaManager areaManagerID;
 
-    public Area()
-    {
+    public Area() {
     }
 
-    public Area(Integer areaID)
-    {
+    public Area(Integer areaID) {
         this.areaID = areaID;
     }
 
-    public Area(Integer areaID, String name)
-    {
+    public Area(Integer areaID, String name) {
         this.areaID = areaID;
         this.name = name;
     }
 
-    public Integer getAreaID()
-    {
+    public Integer getAreaID() {
         return areaID;
     }
 
-    public void setAreaID(Integer areaID)
-    {
+    public void setAreaID(Integer areaID) {
         this.areaID = areaID;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public List<ProblemCategory> getProblemCategoryList()
-    {
+    public List<ProblemCategory> getProblemCategoryList() {
         return problemCategoryList;
     }
 
-    public void setProblemCategoryList(List<ProblemCategory> problemCategoryList)
-    {
+    public void setProblemCategoryList(List<ProblemCategory> problemCategoryList) {
         this.problemCategoryList = problemCategoryList;
     }
 
-    public AreaManager getAreaManagerID()
-    {
+    public AreaManager getAreaManagerID() {
         return areaManagerID;
     }
 
-    public void setAreaManagerID(AreaManager areaManagerID)
-    {
+    public void setAreaManagerID(AreaManager areaManagerID) {
         this.areaManagerID = areaManagerID;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (areaID != null ? areaID.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Area))
-        {
+        if (!(object instanceof Area)) {
             return false;
         }
         Area other = (Area) object;
-        if ((this.areaID == null && other.areaID != null) || (this.areaID != null && !this.areaID.equals(other.areaID)))
-        {
+        if ((this.areaID == null && other.areaID != null) || (this.areaID != null && !this.areaID.equals(other.areaID))) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "mx.udg.helpdesk.entities.Area[ areaID=" + areaID + " ]";
     }
-    
+
 }
