@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <f:view contentType="text/html">
+
+        <!-- *************************************************************** -->
+        <!-- head start -->
+        <!-- *************************************************************** -->
+        <h:head>
+
+            <!-- *********************************************************** -->
+            <!-- IE Compatibility -->
+            <!-- *********************************************************** -->
+            <f:facet name="first">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
+            </f:facet>
+
+            <!-- *********************************************************** -->
+            <!-- css start -->
+            <!-- *********************************************************** -->
+
+            <link href="src/css/default.css" rel="stylesheet" type="text/css"/>
+            <link href="src/css/login.css" rel="stylesheet" type="text/css"/>
+
+            <!-- *********************************************************** -->
+            <!-- css end -->
+            <!-- *********************************************************** -->
+
+            <!-- Insert the page title -->
+            <title>#{strings.loginTitle}</title>
+
+        </h:head>
+        <!-- *************************************************************** -->
+        <!-- head end -->
+        <!-- *************************************************************** -->
+
+        <!-- *************************************************************** -->
+        <!-- body start -->
+        <!-- *************************************************************** -->
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <!-- ******************************************************* -->
+                <!-- central panel start -->
+                <!-- ******************************************************* -->
+                <p:layoutUnit styleClass="central-panel"
+                              position="center">
+
+                    <h:panelGrid columns="2"
+                                 cellpadding="10">
+
+                        <div class="charly_robot">
+                            <h:graphicImage value="/src/img/charly_robot.png"/>
+                        </div>
+
+                        <div>
+                            <h:form id="loginForm">
+
+                                <p:messages id="messages"
+                                            autoUpdate="true"
+                                            closable="true"/>
+
+                                <div id="loginPanel">
+                                    <h:panelGrid columns="1"
+                                                 cellpadding="20">
+                                        <p:panel header="#{strings.loginHeader}">
+                                            <h:panelGrid columns="2"
+                                                         cellpadding="10">
+                                                <p:outputLabel value="#{strings.username}"/>
+                                                <p:inputText value="#{login.username}"
+                                                             required="true"
+                                                             requiredMessage="#{strings.usernameRequiredMessage}"/>
+                                                <p:outputLabel value="#{strings.password}"/>
+                                                <p:password value="#{login.password}"
+                                                            required="true"
+                                                            requiredMessage="#{strings.passwordRequiredMessage}"/>
+                                            </h:panelGrid>
+                                        </p:panel>
+
+                                        <div class="links">
+                                            #{strings.singUpDescription} <a href="#">#{strings.singUp}</a>
+                                        </div>
+
+                                        <p:commandButton value="#{strings.signIn}"
+                                                         update="messages"/>
+                                    </h:panelGrid>
+
+                                </div>
+
+                            </h:form>
+
+                        </div>
+                    </h:panelGrid>
+
+                </p:layoutUnit>
+                <!-- ******************************************************* -->
+                <!-- central panel end -->
+                <!-- ******************************************************* -->
+
+                <!-- ******************************************************* -->
+                <!-- right panel start -->
+                <!-- ******************************************************* -->
+                <p:layoutUnit styleClass="right-panel"
+                              position="east"
+                              size="250">
+
+                </p:layoutUnit>
+                <!-- ******************************************************* -->
+                <!-- right panel end -->
+                <!-- ******************************************************* -->
+
+                <!-- ******************************************************* -->
+                <!-- banner start -->
+                <!-- ******************************************************* -->
+                <p:layoutUnit styleClass="banner"
+                              position="north"
+                              size="200">
+
+                </p:layoutUnit>
+                <!-- ******************************************************************* -->
+                <!-- banner end -->
+                <!-- ******************************************************************* -->
+
+                <!-- ******************************************************************* -->
+                <!-- footer start -->
+                <!-- ******************************************************************* -->
+                <p:layoutUnit styleClass="footer"
+                              position="south"
+                              size="125">
+
+                </p:layoutUnit>
+                <!-- ******************************************************************* -->
+                <!-- footer end -->
+                <!-- ******************************************************************* -->
+
+            </p:layout>
+
+        </h:body>
+        <!-- ******************************************************************* -->
+        <!-- body end -->
+        <!-- ******************************************************************* -->
+
+    </f:view>
+
+</html>
+
+
+
