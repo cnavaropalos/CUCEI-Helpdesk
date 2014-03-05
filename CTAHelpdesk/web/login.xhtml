@@ -52,17 +52,20 @@
                 <p:layoutUnit styleClass="central-panel"
                               position="center">
 
-                    <h:panelGrid columns="2"
-                                 cellpadding="10">
+                    <div id="loginPanel">
 
-                        <div>
-                            <h:form id="loginForm">
+                        <h:panelGrid columns="2"
+                                     cellpadding="50">
 
-                                <p:messages id="messages"
-                                            autoUpdate="true"
-                                            closable="true"/>
+                            <h:panelGrid columns="1">
 
-                                <div id="loginPanel">
+                                <h:form id="loginForm">
+
+                                    <p:messages id="messages"
+                                                autoUpdate="true"
+                                                closable="true"/>
+
+
                                     <h:panelGrid columns="1"
                                                  cellpadding="20">
                                         <p:panel header="#{strings.loginHeader}">
@@ -87,17 +90,27 @@
                                                          update="messages"/>
                                     </h:panelGrid>
 
+
+
+                                </h:form>
+
+
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="1">
+                                <div class="charly_robot">
+                                    <h:graphicImage value="/src/img/charly_robot.png"/>
                                 </div>
 
-                            </h:form>
+                            </h:panelGrid>
 
-                        </div>
 
-                        <div class="charly_robot">
-                            <h:graphicImage value="/src/img/charly_robot.png"/>
-                        </div>
 
-                    </h:panelGrid>
+
+
+                        </h:panelGrid>
+
+                    </div>
 
                 </p:layoutUnit>
                 <!-- ******************************************************* -->

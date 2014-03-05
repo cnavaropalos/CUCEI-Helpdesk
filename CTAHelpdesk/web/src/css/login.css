@@ -1,10 +1,9 @@
 #loginPanel
 {
-    position:absolute;
+    margin: 0 auto;
     top: 20%;
-    bottom: 20%;
-    left: 35%;
-    right: 35%;
+    padding-left: 30%;
+
     text-align: center;
 }
 
