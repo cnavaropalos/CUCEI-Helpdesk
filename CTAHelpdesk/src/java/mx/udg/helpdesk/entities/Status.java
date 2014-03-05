@@ -16,14 +16,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ *
+ * @author Carlos Navapa
+ */
 @Entity
 @Table(name = "status")
-@NamedQueries(
-        {
-            @NamedQuery(name = "Status.findAll", query = "SELECT s FROM Status s"),
-            @NamedQuery(name = "Status.findByStatusID", query = "SELECT s FROM Status s WHERE s.statusID = :statusID"),
-            @NamedQuery(name = "Status.findByName", query = "SELECT s FROM Status s WHERE s.name = :name")
-        })
+@NamedQueries({
+    @NamedQuery(name = "Status.findAll", query = "SELECT s FROM Status s")})
 public class Status implements Serializable {
 
     private static final long serialVersionUID = 1L;

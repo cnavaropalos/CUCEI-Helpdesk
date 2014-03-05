@@ -16,14 +16,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ *
+ * @author Carlos Navapa
+ */
 @Entity
 @Table(name = "priorities")
-@NamedQueries(
-        {
-            @NamedQuery(name = "Priority.findAll", query = "SELECT p FROM Priority p"),
-            @NamedQuery(name = "Priority.findByPriorityID", query = "SELECT p FROM Priority p WHERE p.priorityID = :priorityID"),
-            @NamedQuery(name = "Priority.findByLevel", query = "SELECT p FROM Priority p WHERE p.level = :level")
-        })
+@NamedQueries({
+    @NamedQuery(name = "Priority.findAll", query = "SELECT p FROM Priority p")})
 public class Priority implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,9 +38,9 @@ public class Priority implements Serializable {
     @Column(name = "level")
     private String level;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "priorityID")
-    private List<DepartmentByModule> departmentByModuleList;
+    private List<DepartmentsByModule> departmentsByModuleList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "priorityID")
-    private List<ProblemCategory> problemCategoryList;
+    private List<ProblemCategorie> problemCategorieList;
 
     public Priority() {
     }
@@ -70,20 +70,20 @@ public class Priority implements Serializable {
         this.level = level;
     }
 
-    public List<DepartmentByModule> getDepartmentByModuleList() {
-        return departmentByModuleList;
+    public List<DepartmentsByModule> getDepartmentsByModuleList() {
+        return departmentsByModuleList;
     }
 
-    public void setDepartmentByModuleList(List<DepartmentByModule> departmentByModuleList) {
-        this.departmentByModuleList = departmentByModuleList;
+    public void setDepartmentsByModuleList(List<DepartmentsByModule> departmentsByModuleList) {
+        this.departmentsByModuleList = departmentsByModuleList;
     }
 
-    public List<ProblemCategory> getProblemCategoryList() {
-        return problemCategoryList;
+    public List<ProblemCategorie> getProblemCategorieList() {
+        return problemCategorieList;
     }
 
-    public void setProblemCategoryList(List<ProblemCategory> problemCategoryList) {
-        this.problemCategoryList = problemCategoryList;
+    public void setProblemCategorieList(List<ProblemCategorie> problemCategorieList) {
+        this.problemCategorieList = problemCategorieList;
     }
 
     @Override

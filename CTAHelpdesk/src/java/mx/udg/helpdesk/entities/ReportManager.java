@@ -19,17 +19,14 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ *
+ * @author Carlos Navapa
+ */
 @Entity
 @Table(name = "report_managers")
-@NamedQueries(
-        {
-            @NamedQuery(name = "ReportManager.findAll", query = "SELECT r FROM ReportManager r"),
-            @NamedQuery(name = "ReportManager.findByUserID", query = "SELECT r FROM ReportManager r WHERE r.userID = :userID"),
-            @NamedQuery(name = "ReportManager.findByUsername", query = "SELECT r FROM ReportManager r WHERE r.username = :username"),
-            @NamedQuery(name = "ReportManager.findByPassword", query = "SELECT r FROM ReportManager r WHERE r.password = :password"),
-            @NamedQuery(name = "ReportManager.findByInTime", query = "SELECT r FROM ReportManager r WHERE r.inTime = :inTime"),
-            @NamedQuery(name = "ReportManager.findByOutTime", query = "SELECT r FROM ReportManager r WHERE r.outTime = :outTime")
-        })
+@NamedQueries({
+    @NamedQuery(name = "ReportManager.findAll", query = "SELECT r FROM ReportManager r")})
 public class ReportManager implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -18,14 +18,14 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+/**
+ *
+ * @author Carlos Navapa
+ */
 @Entity
 @Table(name = "work_blogs")
-@NamedQueries(
-        {
-            @NamedQuery(name = "WorkBlog.findAll", query = "SELECT w FROM WorkBlog w"),
-            @NamedQuery(name = "WorkBlog.findByWorkBlogID", query = "SELECT w FROM WorkBlog w WHERE w.workBlogID = :workBlogID"),
-            @NamedQuery(name = "WorkBlog.findByBlogDate", query = "SELECT w FROM WorkBlog w WHERE w.blogDate = :blogDate")
-        })
+@NamedQueries({
+    @NamedQuery(name = "WorkBlog.findAll", query = "SELECT w FROM WorkBlog w")})
 public class WorkBlog implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,11 +42,9 @@ public class WorkBlog implements Serializable {
     @JoinColumn(name = "statusID", referencedColumnName = "statusID")
     @ManyToOne(optional = false)
     private Status statusID;
-    @JoinColumns(
-            {
-                @JoinColumn(name = "reportID", referencedColumnName = "reportID"),
-                @JoinColumn(name = "reportDate", referencedColumnName = "reportDate")
-            })
+    @JoinColumns({
+        @JoinColumn(name = "reportID", referencedColumnName = "reportID"),
+        @JoinColumn(name = "reportDate", referencedColumnName = "reportDate")})
     @ManyToOne(optional = false)
     private Report report;
     @JoinColumn(name = "reportManagerID", referencedColumnName = "userID")

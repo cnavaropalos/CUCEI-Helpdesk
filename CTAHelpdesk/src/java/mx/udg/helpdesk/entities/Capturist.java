@@ -16,15 +16,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ *
+ * @author Carlos Navapa
+ */
 @Entity
 @Table(name = "capturists")
-@NamedQueries(
-        {
-            @NamedQuery(name = "Capturist.findAll", query = "SELECT c FROM Capturist c"),
-            @NamedQuery(name = "Capturist.findByUserID", query = "SELECT c FROM Capturist c WHERE c.userID = :userID"),
-            @NamedQuery(name = "Capturist.findByUsername", query = "SELECT c FROM Capturist c WHERE c.username = :username"),
-            @NamedQuery(name = "Capturist.findByPassword", query = "SELECT c FROM Capturist c WHERE c.password = :password")
-        })
+@NamedQueries({
+    @NamedQuery(name = "Capturist.findAll", query = "SELECT c FROM Capturist c")})
 public class Capturist implements Serializable {
 
     private static final long serialVersionUID = 1L;

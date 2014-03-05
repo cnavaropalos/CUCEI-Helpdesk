@@ -18,14 +18,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ *
+ * @author Carlos Navapa
+ */
 @Entity
 @Table(name = "areas")
-@NamedQueries(
-        {
-            @NamedQuery(name = "Area.findAll", query = "SELECT a FROM Area a"),
-            @NamedQuery(name = "Area.findByAreaID", query = "SELECT a FROM Area a WHERE a.areaID = :areaID"),
-            @NamedQuery(name = "Area.findByName", query = "SELECT a FROM Area a WHERE a.name = :name")
-        })
+@NamedQueries({
+    @NamedQuery(name = "Area.findAll", query = "SELECT a FROM Area a")})
 public class Area implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,7 +40,7 @@ public class Area implements Serializable {
     @Column(name = "name")
     private String name;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "areaID")
-    private List<ProblemCategory> problemCategoryList;
+    private List<ProblemCategorie> problemCategorieList;
     @JoinColumn(name = "areaManagerID", referencedColumnName = "userID")
     @ManyToOne(optional = false)
     private AreaManager areaManagerID;
@@ -73,12 +73,12 @@ public class Area implements Serializable {
         this.name = name;
     }
 
-    public List<ProblemCategory> getProblemCategoryList() {
-        return problemCategoryList;
+    public List<ProblemCategorie> getProblemCategorieList() {
+        return problemCategorieList;
     }
 
-    public void setProblemCategoryList(List<ProblemCategory> problemCategoryList) {
-        this.problemCategoryList = problemCategoryList;
+    public void setProblemCategorieList(List<ProblemCategorie> problemCategorieList) {
+        this.problemCategorieList = problemCategorieList;
     }
 
     public AreaManager getAreaManagerID() {

@@ -13,15 +13,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ *
+ * @author Carlos Navapa
+ */
 @Entity
 @Table(name = "users")
-@NamedQueries(
-        {
-            @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
-            @NamedQuery(name = "User.findByUserID", query = "SELECT u FROM User u WHERE u.userID = :userID"),
-            @NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.name = :name"),
-            @NamedQuery(name = "User.findByLastName", query = "SELECT u FROM User u WHERE u.lastName = :lastName")
-        })
+@NamedQueries({
+    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")})
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,6 +46,8 @@ public class User implements Serializable {
     private ReportManager reportManager;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
     private AreaManager areaManager;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    private Client client;
 
     public User() {
     }
@@ -107,6 +108,14 @@ public class User implements Serializable {
 
     public void setAreaManager(AreaManager areaManager) {
         this.areaManager = areaManager;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     @Override

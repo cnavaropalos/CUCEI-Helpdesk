@@ -20,20 +20,14 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ *
+ * @author Carlos Navapa
+ */
 @Entity
 @Table(name = "reports")
-@NamedQueries(
-        {
-            @NamedQuery(name = "Report.findAll", query = "SELECT r FROM Report r"),
-            @NamedQuery(name = "Report.findByReportID", query = "SELECT r FROM Report r WHERE r.reportPK.reportID = :reportID"),
-            @NamedQuery(name = "Report.findByReportDate", query = "SELECT r FROM Report r WHERE r.reportPK.reportDate = :reportDate"),
-            @NamedQuery(name = "Report.findByReportTime", query = "SELECT r FROM Report r WHERE r.reportTime = :reportTime"),
-            @NamedQuery(name = "Report.findByClientID", query = "SELECT r FROM Report r WHERE r.clientID = :clientID"),
-            @NamedQuery(name = "Report.findByClientName", query = "SELECT r FROM Report r WHERE r.clientName = :clientName"),
-            @NamedQuery(name = "Report.findByClientEmail", query = "SELECT r FROM Report r WHERE r.clientEmail = :clientEmail"),
-            @NamedQuery(name = "Report.findByDescription", query = "SELECT r FROM Report r WHERE r.description = :description"),
-            @NamedQuery(name = "Report.findByNotes", query = "SELECT r FROM Report r WHERE r.notes = :notes")
-        })
+@NamedQueries({
+    @NamedQuery(name = "Report.findAll", query = "SELECT r FROM Report r")})
 public class Report implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,21 +40,6 @@ public class Report implements Serializable {
     private Date reportTime;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "clientID")
-    private String clientID;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "clientName")
-    private String clientName;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "clientEmail")
-    private String clientEmail;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 500)
     @Column(name = "description")
     private String description;
@@ -69,19 +48,20 @@ public class Report implements Serializable {
     @Size(min = 1, max = 300)
     @Column(name = "notes")
     private String notes;
+    @JoinColumn(name = "clientID", referencedColumnName = "userID")
+    @ManyToOne(optional = false)
+    private Client clientID;
     @JoinColumn(name = "capturisID", referencedColumnName = "userID")
     @ManyToOne(optional = false)
     private Capturist capturisID;
     @JoinColumn(name = "problemID", referencedColumnName = "problemID")
     @ManyToOne(optional = false)
-    private ProblemCategory problemID;
-    @JoinColumns(
-            {
-                @JoinColumn(name = "moduleID", referencedColumnName = "moduleID"),
-                @JoinColumn(name = "departmentID", referencedColumnName = "departmentID")
-            })
+    private ProblemCategorie problemID;
+    @JoinColumns({
+        @JoinColumn(name = "moduleID", referencedColumnName = "moduleID"),
+        @JoinColumn(name = "departmentID", referencedColumnName = "departmentID")})
     @ManyToOne(optional = false)
-    private DepartmentByModule departmentByModule;
+    private DepartmentsByModule departmentsByModule;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "report")
     private List<WorkBlog> workBlogList;
 
@@ -92,12 +72,9 @@ public class Report implements Serializable {
         this.reportPK = reportPK;
     }
 
-    public Report(ReportPK reportPK, Date reportTime, String clientID, String clientName, String clientEmail, String description, String notes) {
+    public Report(ReportPK reportPK, Date reportTime, String description, String notes) {
         this.reportPK = reportPK;
         this.reportTime = reportTime;
-        this.clientID = clientID;
-        this.clientName = clientName;
-        this.clientEmail = clientEmail;
         this.description = description;
         this.notes = notes;
     }
@@ -122,30 +99,6 @@ public class Report implements Serializable {
         this.reportTime = reportTime;
     }
 
-    public String getClientID() {
-        return clientID;
-    }
-
-    public void setClientID(String clientID) {
-        this.clientID = clientID;
-    }
-
-    public String getClientName() {
-        return clientName;
-    }
-
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
-    }
-
-    public String getClientEmail() {
-        return clientEmail;
-    }
-
-    public void setClientEmail(String clientEmail) {
-        this.clientEmail = clientEmail;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -162,6 +115,14 @@ public class Report implements Serializable {
         this.notes = notes;
     }
 
+    public Client getClientID() {
+        return clientID;
+    }
+
+    public void setClientID(Client clientID) {
+        this.clientID = clientID;
+    }
+
     public Capturist getCapturisID() {
         return capturisID;
     }
@@ -170,20 +131,20 @@ public class Report implements Serializable {
         this.capturisID = capturisID;
     }
 
-    public ProblemCategory getProblemID() {
+    public ProblemCategorie getProblemID() {
         return problemID;
     }
 
-    public void setProblemID(ProblemCategory problemID) {
+    public void setProblemID(ProblemCategorie problemID) {
         this.problemID = problemID;
     }
 
-    public DepartmentByModule getDepartmentByModule() {
-        return departmentByModule;
+    public DepartmentsByModule getDepartmentsByModule() {
+        return departmentsByModule;
     }
 
-    public void setDepartmentByModule(DepartmentByModule departmentByModule) {
-        this.departmentByModule = departmentByModule;
+    public void setDepartmentsByModule(DepartmentsByModule departmentsByModule) {
+        this.departmentsByModule = departmentsByModule;
     }
 
     public List<WorkBlog> getWorkBlogList() {

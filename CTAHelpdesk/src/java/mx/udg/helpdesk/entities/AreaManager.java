@@ -16,14 +16,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ *
+ * @author Carlos Navapa
+ */
 @Entity
 @Table(name = "area_managers")
-@NamedQueries(
-        {
-            @NamedQuery(name = "AreaManager.findAll", query = "SELECT a FROM AreaManager a"),
-            @NamedQuery(name = "AreaManager.findByUserID", query = "SELECT a FROM AreaManager a WHERE a.userID = :userID"),
-            @NamedQuery(name = "AreaManager.findByExt", query = "SELECT a FROM AreaManager a WHERE a.ext = :ext")
-        })
+@NamedQueries({
+    @NamedQuery(name = "AreaManager.findAll", query = "SELECT a FROM AreaManager a")})
 public class AreaManager implements Serializable {
 
     private static final long serialVersionUID = 1L;

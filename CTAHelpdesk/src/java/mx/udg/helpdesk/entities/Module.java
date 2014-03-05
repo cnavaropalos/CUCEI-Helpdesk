@@ -16,14 +16,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ *
+ * @author Carlos Navapa
+ */
 @Entity
 @Table(name = "modules")
-@NamedQueries(
-        {
-            @NamedQuery(name = "Module.findAll", query = "SELECT m FROM Module m"),
-            @NamedQuery(name = "Module.findByModuleID", query = "SELECT m FROM Module m WHERE m.moduleID = :moduleID"),
-            @NamedQuery(name = "Module.findByName", query = "SELECT m FROM Module m WHERE m.name = :name")
-        })
+@NamedQueries({
+    @NamedQuery(name = "Module.findAll", query = "SELECT m FROM Module m")})
 public class Module implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,7 +38,7 @@ public class Module implements Serializable {
     @Column(name = "name")
     private String name;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "module")
-    private List<DepartmentByModule> departmentByModuleList;
+    private List<DepartmentsByModule> departmentsByModuleList;
 
     public Module() {
     }
@@ -68,12 +68,12 @@ public class Module implements Serializable {
         this.name = name;
     }
 
-    public List<DepartmentByModule> getDepartmentByModuleList() {
-        return departmentByModuleList;
+    public List<DepartmentsByModule> getDepartmentsByModuleList() {
+        return departmentsByModuleList;
     }
 
-    public void setDepartmentByModuleList(List<DepartmentByModule> departmentByModuleList) {
-        this.departmentByModuleList = departmentByModuleList;
+    public void setDepartmentsByModuleList(List<DepartmentsByModule> departmentsByModuleList) {
+        this.departmentsByModuleList = departmentsByModuleList;
     }
 
     @Override

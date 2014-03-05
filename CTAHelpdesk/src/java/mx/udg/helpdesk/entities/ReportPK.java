@@ -9,6 +9,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+/**
+ *
+ * @author Carlos Navapa
+ */
 @Embeddable
 public class ReportPK implements Serializable {
 
