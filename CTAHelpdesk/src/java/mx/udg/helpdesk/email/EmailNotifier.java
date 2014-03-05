@@ -3,8 +3,11 @@ package mx.udg.helpdesk.email;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
+import javax.faces.context.FacesContext;
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -21,20 +24,33 @@ public class EmailNotifier {
      * Using the parameters, this method sends an email to the desired
      * destinataries using smtp server.
      *
-     * @param host
      * @param toList
-     * @param from
      * @param subject
      * @param message
      * @return true if the email was successfully send.
      */
-    public static boolean sendEmail(String host, ArrayList<String> toList, String from, String subject, String message) {
+    public static boolean sendEmail(ArrayList<String> toList, String subject, String message) {
+
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        final String from = facesContext.getExternalContext().getInitParameter("EmailServer.ACCOUNT");
+        final String password = facesContext.getExternalContext().getInitParameter("EmailServer.PASSWORD");
+        final String host = facesContext.getExternalContext().getInitParameter("EmailServer.HOST");
+        final String port = facesContext.getExternalContext().getInitParameter("EmailServer.PORT");
 
         Properties props = new Properties();
         props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", port);
         props.put("mail.debug", "true");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
 
-        Session session = Session.getInstance(props);
+        Session session = Session.getInstance(props,
+                new Authenticator() {
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(from, password);
+                    }
+                });
 
         try {
             Message msg = new MimeMessage(session);

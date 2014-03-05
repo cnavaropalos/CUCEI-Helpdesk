@@ -45,7 +45,7 @@ public class ActiveDirectoryConnection {
             String userDN;
             LDAPConnection connection = new LDAPConnection(HOST, PORT, GENERIC_USER, GENERIC_PASSWORD);
 
-            SearchResult searchResults = connection.search(BASE_DN, SearchScope.SUB, "(sAMAccountName=" + username + ")");
+            SearchResult searchResults = connection.search(BASE_DN, SearchScope.SUB, "(email=" + username + ")");
 
             List<SearchResultEntry> entries = searchResults.getSearchEntries();
 
@@ -55,12 +55,14 @@ public class ActiveDirectoryConnection {
                     connection.close();
                     connection = new LDAPConnection(HOST, PORT, userDN, password);
                     userID = Integer.parseInt(entry.getAttributeValue("title"));
-                } catch (LDAPException ex) {
+                }
+                catch (LDAPException ex) {
                 }
             }
 
             connection.close();
-        } catch (LDAPException ex) {
+        }
+        catch (LDAPException ex) {
         }
         return userID;
     }
@@ -88,14 +90,14 @@ public class ActiveDirectoryConnection {
             SearchResult searchResults = connection.search(BASE_DN, SearchScope.SUB, "(employeeID=" + userID + ")");
             List<SearchResultEntry> entries = searchResults.getSearchEntries();
             for (SearchResultEntry entry : entries) {
+
                 employeeData.put("name", entry.getAttributeValue("givenName"));
                 employeeData.put("lastname", entry.getAttributeValue("sn"));
-                employeeData.put("username", entry.getAttributeValue("mailNickName"));
                 employeeData.put("email", entry.getAttributeValue("mail"));
-                employeeData.put("wwid", entry.getAttributeValue("title"));
             }
             connection.close();
-        } catch (LDAPException ex) {
+        }
+        catch (LDAPException ex) {
         }
 
         return employeeData;

@@ -1,11 +1,14 @@
 package mx.udg.helpdesk.beans;
 
+import java.io.Serializable;
+import mx.udg.helpdesk.views.FacesMapping;
+
 /**
  * This class is the implementation of the model from login.jsf
  *
  * @author Carlos Navapa
  */
-public class Login {
+public class Login implements Serializable {
 
     private String username;
     private String password;
@@ -16,6 +19,27 @@ public class Login {
     public Login() {
     }
 
+    /**
+     * Return the URL for login.xhtml
+     *
+     * @return URL
+     */
+    public String gotoLogin() {
+        return FacesMapping.getMapping("anywhere-login");
+    }
+
+    /**
+     * Return the URL for signUp.xhtml
+     *
+     * @return URL
+     */
+    public String gotoSignUp() {
+        return FacesMapping.getMapping("anywhere-signUp");
+    }
+
+    /*
+     Getters and Setters
+     */
     public String getUsername() {
         return username;
     }

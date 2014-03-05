@@ -24,15 +24,15 @@
             <!-- css start -->
             <!-- *********************************************************** -->
 
-            <!-- Insert the page css -->
             <link href="src/css/default.css" rel="stylesheet" type="text/css"/>
+            <link href="src/css/login.css" rel="stylesheet" type="text/css"/>
 
             <!-- *********************************************************** -->
             <!-- css end -->
             <!-- *********************************************************** -->
 
             <!-- Insert the page title -->
-            <title></title>
+            <title>#{strings.loginTitle}</title>
 
         </h:head>
         <!-- *************************************************************** -->
@@ -52,26 +52,19 @@
                 <p:layoutUnit styleClass="central-panel"
                               position="center">
 
+
+
                 </p:layoutUnit>
                 <!-- ******************************************************* -->
                 <!-- central panel end -->
                 <!-- ******************************************************* -->
 
                 <!-- ******************************************************* -->
-                <!-- left panel start -->
-                <!-- ******************************************************* -->
-                <p:layoutUnit styleClass="left-panel"
-                              position="west">
-                </p:layoutUnit>
-                <!-- ******************************************************* -->
-                <!-- left panel end -->
-                <!-- ******************************************************* -->
-
-                <!-- ******************************************************* -->
                 <!-- right panel start -->
                 <!-- ******************************************************* -->
                 <p:layoutUnit styleClass="right-panel"
-                              position="east">
+                              position="east"
+                              size="250">
 
                 </p:layoutUnit>
                 <!-- ******************************************************* -->
@@ -79,13 +72,24 @@
                 <!-- ******************************************************* -->
 
                 <!-- ******************************************************* -->
+                <!-- left panel start -->
+                <!-- ******************************************************* -->
+                <p:layoutUnit styleClass="left-panel"
+                              position="west"
+                              size="150">
+
+                </p:layoutUnit>
+                <!-- ******************************************************* -->
+                <!-- left panel end -->
+                <!-- ******************************************************* -->
+
+                <!-- ******************************************************* -->
                 <!-- banner start -->
                 <!-- ******************************************************* -->
                 <p:layoutUnit styleClass="banner"
                               position="north"
-                              minSize="180"
-                              maxSize="200">
-                    <h:graphicImage value="src/img/banner.png"/>
+                              size="200">
+
                 </p:layoutUnit>
                 <!-- ******************************************************************* -->
                 <!-- banner end -->
@@ -96,9 +100,15 @@
                 <!-- ******************************************************************* -->
                 <p:layoutUnit styleClass="footer"
                               position="south"
-                              minSize="80"
-                              maxSize="100">
-                    <h:graphicImage value="src/img/footer.png"/>
+                              size="80">
+                    <div class="main-menu-button">
+                        <h:form id="main-menu-form">
+                            <p:commandLink action="#{loginBean.gotoLogin()}"
+                                           ajax="false">
+                                <h:graphicImage value="/src/img/home-icon.png"/>
+                            </p:commandLink>
+                        </h:form>
+                    </div>
                 </p:layoutUnit>
                 <!-- ******************************************************************* -->
                 <!-- footer end -->

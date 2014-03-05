@@ -1,4 +1,3 @@
-.ui-layout-center .ui-layout-unit-content,
 .ui-layout-west .ui-layout-unit-content,
 .ui-layout-east .ui-layout-unit-content,
 .ui-layout-north .ui-layout-unit-content,
@@ -7,20 +6,19 @@
     overflow: hidden;
 }
 
-.ui-layout-unit
-{
-    padding: 2.4em;
-}
-
 .ui-layout-unit .ui-layout-unit-content
 {
     background: transparent;
 }
 
+.ui-layout-unit
+{
+    padding: 0.3%;
+}
+
 .central-panel, .left-panel, .right-panel, .banner, .footer
 {    border: none;
 }
-
 
 .banner
 {
@@ -42,7 +40,8 @@
 }
 
 .central-panel{
-
+    padding-top: 3%;
+    padding-bottom: 2%;
 }
 
 
@@ -54,4 +53,25 @@
 {
     color: darkcyan;
     text-decoration: none;
+}
+
+.to-the-left-text
+{
+    text-align: left;
+}
+
+.centered-text
+{
+    text-align: center;
+}
+
+.main-menu-button
+{
+    padding-top: 0.2%;
+    padding-left: 1%;
+}
+
+.main-menu-button img
+{
+    width: 3.5%;
 }

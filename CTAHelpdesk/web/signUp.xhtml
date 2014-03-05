@@ -25,14 +25,14 @@
             <!-- *********************************************************** -->
 
             <link href="src/css/default.css" rel="stylesheet" type="text/css"/>
-            <link href="src/css/login.css" rel="stylesheet" type="text/css"/>
+            <link href="src/css/signUp.css" rel="stylesheet" type="text/css"/>
 
             <!-- *********************************************************** -->
             <!-- css end -->
             <!-- *********************************************************** -->
 
             <!-- Insert the page title -->
-            <title>#{strings.loginTitle}</title>
+            <title>#{strings.signUpTitle}</title>
 
         </h:head>
         <!-- *************************************************************** -->
@@ -52,52 +52,81 @@
                 <p:layoutUnit styleClass="central-panel"
                               position="center">
 
-                    <h:panelGrid columns="2"
-                                 cellpadding="10">
+                    <p:panel id="registration-panel"
+                             header="#{strings.registrationForm}">
 
-                        <div>
-                            <h:form id="loginForm">
+                        <div id="instructions-block">
+                            <p:outputLabel value="#{strings.registrationInstructions}"/>
+                        </div>
 
-                                <p:messages id="messages"
-                                            autoUpdate="true"
-                                            closable="true"/>
+                        <h:panelGrid columns="2"
+                                     cellpadding="15"
+                                     styleClass="to-the-left-text">
 
-                                <div id="loginPanel">
-                                    <h:panelGrid columns="1"
-                                                 cellpadding="20">
-                                        <p:panel header="#{strings.loginHeader}">
-                                            <h:panelGrid columns="2"
-                                                         cellpadding="10">
-                                                <p:outputLabel value="#{strings.username}"/>
-                                                <p:inputText value="#{loginBean.username}"
-                                                             required="true"
-                                                             requiredMessage="#{strings.usernameRequiredMessage}"/>
-                                                <p:outputLabel value="#{strings.password}"/>
-                                                <p:password value="#{loginBean.password}"
-                                                            required="true"
-                                                            requiredMessage="#{strings.passwordRequiredMessage}"/>
-                                            </h:panelGrid>
-                                        </p:panel>
+                            <h:form id="registration-form">
 
-                                        <div class="links">
-                                            #{strings.singUpDescription} <a href="#{loginBean.gotoSignUp()}">#{strings.singUp}</a>
-                                        </div>
+                                <p:growl id="messages"/>
 
-                                        <p:commandButton value="#{strings.signIn}"
-                                                         update="messages"/>
-                                    </h:panelGrid>
+                                <h:panelGrid columns="2"
+                                             cellpadding="10">
+                                    <p:outputLabel value="#{strings.userID}"/>
+                                    <p:inputMask value="#{signUpBean.userID}"
+                                                 mask="99999999"
+                                                 required="true"
+                                                 requiredMessage="#{strings.userIDRequiredMessage}"/>
+                                </h:panelGrid>
 
+                                <h:panelGrid columns="1"
+                                             cellpadding="10"
+                                             styleClass="to-the-left-text">
+                                    <p:outputLabel value="#{strings.reason}"/>
+                                    <p:inputTextarea rows="5"
+                                                     cols="30"
+                                                     counter="characters-left"
+                                                     maxlength="250"
+                                                     counterTemplate="#{strings.remainingCharacters}"
+                                                     autoResize="false"
+                                                     value="#{signUpBean.reason}"
+                                                     required="true"
+                                                     requiredMessage="#{strings.reasonRequiredMessage}"/>
+
+                                    <h:outputText id="characters-left"/>
+                                </h:panelGrid>
+
+                                <div id="registrate-button-block">
+                                    <p:commandButton  id="registrate-button"
+                                                      value="#{strings.send}"
+                                                      actionListener="#{signUpBean.sendSignUpRequest()}"
+                                                      update="messages">
+                                        <p:confirm header="#{strings.emailSendingHeader}"
+                                                   message= "#{strings.emailSendingNote}"/>
+                                    </p:commandButton>
                                 </div>
-
                             </h:form>
 
-                        </div>
+                            <h:graphicImage  value="/src/img/sign-up-icon.png"
+                                             width="240"/>
+                        </h:panelGrid>
+                    </p:panel>
 
-                        <div class="charly_robot">
-                            <h:graphicImage value="/src/img/charly_robot.png"/>
-                        </div>
+                    <h:form>
+                        <p:confirmDialog global="true"
+                                         showEffect="fade"
+                                         hideEffect="fade">
 
-                    </h:panelGrid>
+                            <div class="centered-text">
+                                <p:commandButton value="#{strings.yes}"
+                                                 type="button"
+                                                 styleClass="ui-confirmdialog-yes"
+                                                 icon="ui-icon-check"/>
+                                <p:commandButton value="#{strings.no}"
+                                                 type="button"
+                                                 styleClass="ui-confirmdialog-no"
+                                                 icon="ui-icon-close"/>
+                            </div>
+                        </p:confirmDialog>
+
+                    </h:form>
 
                 </p:layoutUnit>
                 <!-- ******************************************************* -->
@@ -125,7 +154,7 @@
                               size="80">
                     <div class="main-menu-button">
                         <h:form id="main-menu-form">
-                            <p:commandLink action="#{loginBean.gotoLogin()}"
+                            <p:commandLink action="#{signUpBean.gotoLogin()}"
                                            ajax="false">
                                 <h:graphicImage value="/src/img/home-icon.png"/>
                             </p:commandLink>

@@ -21,6 +21,7 @@ public class FacesMapping {
         facesMapping = new HashMap<>();
         facesMapping.put("anywhere-login", "login.jsf");
         facesMapping.put("anywhere-error", "error.jsf");
+        facesMapping.put("anywhere-signUp", "signUp.jsf");
 
     }
 

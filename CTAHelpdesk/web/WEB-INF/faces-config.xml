@@ -22,9 +22,18 @@
     </factory>
 
     <managed-bean>
-        <managed-bean-name>login</managed-bean-name>
+        <managed-bean-name>loginBean</managed-bean-name>
         <managed-bean-class>mx.udg.helpdesk.beans.Login</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
-
+    <managed-bean>
+        <managed-bean-name>signUpBean</managed-bean-name>
+        <managed-bean-class>mx.udg.helpdesk.beans.SignUp</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>errorBean</managed-bean-name>
+        <managed-bean-class>mx.udg.helpdesk.beans.Error</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
 </faces-config>

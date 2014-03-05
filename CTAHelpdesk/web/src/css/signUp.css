@@ -1,0 +1,27 @@
+#registration-panel
+{
+    margin: 0 auto;
+    width: 600px;
+    text-align: center;
+}
+
+#registrate-button-block
+{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    text-align: center;
+}
+
+.ui-panel-content
+{
+    font-size: 80%;
+}
+
+#instructions-block
+{
+    padding-top: 8%;
+    padding-bottom: 5%;
+    font-size: 120%;
+    color: #2255a5;
+    text-align: center;
+}

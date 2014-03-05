@@ -25,14 +25,14 @@
             <!-- *********************************************************** -->
 
             <link href="src/css/default.css" rel="stylesheet" type="text/css"/>
-            <link href="src/css/login.css" rel="stylesheet" type="text/css"/>
+            <link href="src/css/error.css" rel="stylesheet" type="text/css"/>
 
             <!-- *********************************************************** -->
             <!-- css end -->
             <!-- *********************************************************** -->
 
             <!-- Insert the page title -->
-            <title>#{strings.loginTitle}</title>
+            <title>#{strings.errorTitle}</title>
 
         </h:head>
         <!-- *************************************************************** -->
@@ -52,52 +52,26 @@
                 <p:layoutUnit styleClass="central-panel"
                               position="center">
 
-                    <h:panelGrid columns="2"
-                                 cellpadding="10">
+                    <div id="exception-title-block">
+                        <h:outputText value="#{errorBean.exceptionTitle}"/>
+                    </div>
 
-                        <div>
-                            <h:form id="loginForm">
+                    <div id="exception-message-block">
+                        <p:panel id="exception-message-panel"
+                                 header="Exception Detail">
+                            <p:scrollPanel>
+                                #{flash.errorDetails}
+                            </p:scrollPanel>
+                        </p:panel>
+                    </div>
 
-                                <p:messages id="messages"
-                                            autoUpdate="true"
-                                            closable="true"/>
-
-                                <div id="loginPanel">
-                                    <h:panelGrid columns="1"
-                                                 cellpadding="20">
-                                        <p:panel header="#{strings.loginHeader}">
-                                            <h:panelGrid columns="2"
-                                                         cellpadding="10">
-                                                <p:outputLabel value="#{strings.username}"/>
-                                                <p:inputText value="#{loginBean.username}"
-                                                             required="true"
-                                                             requiredMessage="#{strings.usernameRequiredMessage}"/>
-                                                <p:outputLabel value="#{strings.password}"/>
-                                                <p:password value="#{loginBean.password}"
-                                                            required="true"
-                                                            requiredMessage="#{strings.passwordRequiredMessage}"/>
-                                            </h:panelGrid>
-                                        </p:panel>
-
-                                        <div class="links">
-                                            #{strings.singUpDescription} <a href="#{loginBean.gotoSignUp()}">#{strings.singUp}</a>
-                                        </div>
-
-                                        <p:commandButton value="#{strings.signIn}"
-                                                         update="messages"/>
-                                    </h:panelGrid>
-
-                                </div>
-
-                            </h:form>
-
-                        </div>
-
-                        <div class="charly_robot">
-                            <h:graphicImage value="/src/img/charly_robot.png"/>
-                        </div>
-
-                    </h:panelGrid>
+                    <div id="return-button-block">
+                        <h:form>
+                            <p:commandButton value="#{strings.return}"
+                                             action="#{errorBean.gotoLogin()}"
+                                             ajax="false"/>
+                        </h:form>
+                    </div>
 
                 </p:layoutUnit>
                 <!-- ******************************************************* -->
@@ -125,7 +99,7 @@
                               size="80">
                     <div class="main-menu-button">
                         <h:form id="main-menu-form">
-                            <p:commandLink action="#{loginBean.gotoLogin()}"
+                            <p:commandLink action="#{signUpBean.gotoLogin()}"
                                            ajax="false">
                                 <h:graphicImage value="/src/img/home-icon.png"/>
                             </p:commandLink>
