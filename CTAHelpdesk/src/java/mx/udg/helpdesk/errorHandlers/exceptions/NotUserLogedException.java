@@ -1,4 +1,4 @@
-package mx.udg.helpdesk.errorHandlers;
+package mx.udg.helpdesk.errorHandlers.exceptions;
 
 /**
  * This exception is thrown when the session expired. Almost in all the cases
